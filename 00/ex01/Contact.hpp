@@ -1,5 +1,5 @@
-#ifndef CONTACT
-# define CONTACT
+#ifndef __CONTACT_H__
+# define __CONTACT_H__
 
 class	Contact {
 	public:
@@ -9,4 +9,4 @@ class	Contact {
 		std::string	phoneNumber;
 		std::string	darkestSecret;
 };
-#endif
+#endif /*__CONTACT_H__*/

@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK
-# define PHONEBOOK
+#ifndef __PHONEBOOK_H__
+# define __PHONEBOOK_H__
 
 # include "Contact.hpp"
 
@@ -12,4 +12,4 @@ class	PhoneBook {
 		void	addContact(void);
 		void	printContact(void);
 };
-#endif
+#endif /*__PHONEBOOK_H__*/
