@@ -12,7 +12,7 @@ class	Point {
 		Point( void );
 		Point( Fixed const x, Fixed const y );
 		Point( Point const &point );
-		Point & operator = ( Point const &point);
+		Point & operator = ( Point const &point );
 		~Point( void );
 
 		Fixed const	getX( void ) const;
