@@ -15,35 +15,35 @@ void	PhoneBook::addContact(void) {
 		std::cout << "First name: ";
 		getline(std::cin, input);
 	}
-	this->contacts[this->i % 8].firstName = input;
+	this->contacts[this->i % 8].setFN(input);
 
 	input.clear();
 	while (!std::cin.eof() && input.empty()) {
 		std::cout << "Last name: ";
 		getline(std::cin, input);
 	}
-	this->contacts[this->i % 8].lastName = input;
+	this->contacts[this->i % 8].setLN(input);
 
 	input.clear();
 	while (!std::cin.eof() && input.empty()) {
 		std::cout << "Nickname: ";
 		getline(std::cin, input);
 	}
-	this->contacts[this->i % 8].nickname = input;
+	this->contacts[this->i % 8].setNN(input);
 
 	input.clear();
 	while (!std::cin.eof() && input.empty()) {
 		std::cout << "Phone number: ";
 		getline(std::cin, input);
 	}
-	this->contacts[this->i % 8].phoneNumber = input;
+	this->contacts[this->i % 8].setPN(input);
 
 	input.clear();
 	while (!std::cin.eof() && input.empty()) {
 		std::cout << "Darkest secret: ";
 		getline(std::cin, input);
 	}
-	this->contacts[this->i % 8].darkestSecret = input;
+	this->contacts[this->i % 8].setDS(input);
 
 	this->i++;
 }
@@ -64,11 +64,11 @@ void	PhoneBook::printContact(void) {
 		std::cout << "         " << i + 1 << "|";
 		for (int j = 0; j < 3; j++) {
 			if (j == 0)
-				str = this->contacts[i].firstName;
+				str = this->contacts[i].getFN();
 			else if (j == 1)
-				str = this->contacts[i].lastName;
+				str = this->contacts[i].getLN();
 			else
-				str = this->contacts[i].nickname;
+				str = this->contacts[i].getNN();
 			len = str.length();
 			if (len > 10)
 				std::cout << str.substr(0, 9) << ".";
@@ -86,9 +86,9 @@ void	PhoneBook::printContact(void) {
 		inputCpy = input.c_str();
 		index = atoi(inputCpy);
 	}
-	std::cout << this->contacts[index - 1].firstName << std::endl;
-	std::cout << this->contacts[index - 1].lastName << std::endl;
-	std::cout << this->contacts[index - 1].nickname << std::endl;
-	std::cout << this->contacts[index - 1].phoneNumber << std::endl;
-	std::cout << this->contacts[index - 1].darkestSecret << std::endl;
+	std::cout << this->contacts[index - 1].getFN() << std::endl;
+	std::cout << this->contacts[index - 1].getLN() << std::endl;
+	std::cout << this->contacts[index - 1].getNN() << std::endl;
+	std::cout << this->contacts[index - 1].getPN() << std::endl;
+	std::cout << this->contacts[index - 1].getDS() << std::endl;
 }
