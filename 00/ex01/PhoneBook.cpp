@@ -86,9 +86,11 @@ void	PhoneBook::printContact(void) {
 		inputCpy = input.c_str();
 		index = atoi(inputCpy);
 	}
-	std::cout << this->contacts[index - 1].getFN() << std::endl;
-	std::cout << this->contacts[index - 1].getLN() << std::endl;
-	std::cout << this->contacts[index - 1].getNN() << std::endl;
-	std::cout << this->contacts[index - 1].getPN() << std::endl;
-	std::cout << this->contacts[index - 1].getDS() << std::endl;
+	if (index != 0) {
+		std::cout << this->contacts[index - 1].getFN() << std::endl;
+		std::cout << this->contacts[index - 1].getLN() << std::endl;
+		std::cout << this->contacts[index - 1].getNN() << std::endl;
+		std::cout << this->contacts[index - 1].getPN() << std::endl;
+		std::cout << this->contacts[index - 1].getDS() << std::endl;
+	}
 }
