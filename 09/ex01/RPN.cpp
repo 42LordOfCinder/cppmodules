@@ -5,7 +5,12 @@ RPN::RPN() {}
 
 RPN::RPN(RPN &rpn) {(void) rpn;}
 
-RPN	&RPN::operator=(RPN const &rpn) {(void) rpn; return *this;}
+RPN	&RPN::operator=(RPN const &rpn) {
+	if (this != &rpn) {
+		this->op = rpn.op;
+	}
+	return *this;
+}
 
 RPN::~RPN() {}
 
@@ -38,6 +43,8 @@ bool	RPN::solve(char *arg) {
 						res = o1 * o2;
 						break ;
 					case 3:
+						if (o2 == 0)
+							return false;
 						res = o1 / o2;
 						break ;
 				}

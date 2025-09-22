@@ -7,7 +7,12 @@ BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange &be) {(void) be;}
 
-BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &be) {(void) be; return *this;}
+BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &be) {
+	if (this != &be) {
+		this->rates = be.rates;
+	}
+	return *this;
+}
 
 BitcoinExchange::~BitcoinExchange() {}
 
@@ -57,6 +62,23 @@ bool	BitcoinExchange::checkValue(std::string value, float *fValue) {
 	return true;
 }
 
+bool	BitcoinExchange::validDate(int year, int month, int day) {
+	if (year < 2009)
+		return false;
+	if (month < 1 || month > 12)
+		return false;
+	static const int	daysInMonth[] = {
+		0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+	};
+	int	days = daysInMonth[month];
+	if (month == 2) {
+		bool leap = ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+		if (leap)
+			days = 29;
+	}
+	return day >= 1 && day <= days;
+}
+
 bool	BitcoinExchange::checkDate(std::string date) {
 	std::string	year, month, day;
 	int			iYear, iMonth, iDay;
@@ -73,9 +95,7 @@ bool	BitcoinExchange::checkDate(std::string date) {
 	std::getline(ss, day);
 	std::stringstream	ss2(year), ss3(month), ss4(day);
 	ss2 >> iYear, ss3 >> iMonth, ss4 >> iDay;
-	if (iYear < 2009 || iMonth < 1 || iMonth > 12 || iDay < 1 || iDay > 31)
-		return false;
-	return true;
+	return validDate(iYear, iMonth, iDay);
 }
 
 bool	BitcoinExchange::loadData() {

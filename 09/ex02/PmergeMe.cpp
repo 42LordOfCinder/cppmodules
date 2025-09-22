@@ -7,9 +7,16 @@
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(PmergeMe &pmm) {(void) pmm;}
+PmergeMe::PmergeMe(PmergeMe &pmm) {*this = pmm;}
 
-PmergeMe	&PmergeMe::operator=(PmergeMe const &pmm) {(void) pmm; return *this;}
+PmergeMe	&PmergeMe::operator=(PmergeMe const &pmm) {
+	if (this != &pmm) {
+		this->deq = pmm.deq;
+		this->vec = pmm.vec;
+		this->tmp = pmm.tmp;
+	}
+	return *this;
+}
 
 PmergeMe::~PmergeMe() {}
 

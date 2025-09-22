@@ -21,6 +21,7 @@ class	BitcoinExchange {
 		std::string	trim(std::string const &str);
 		bool		checkValue(std::string, float *fValue);
 		bool		checkDate(std::string date);
+		bool		validDate(int year, int month, int day);
 };
 
 #endif
